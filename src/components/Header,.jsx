@@ -1,8 +1,13 @@
 import styled from "styled-components";
-import { Link } from 'react-router-dom';
-import { accent } from './../theme';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Header({ loggedIn }) {
+    const navigate = useNavigate();
+
+    const onLogOutClick = () => {
+        alert("로그아웃 되었습니다.")
+        navigate("/");
+    }
 
     return(
         <HeaderBox>
@@ -14,9 +19,9 @@ function Header({ loggedIn }) {
             <LinkBox>
                 {loggedIn ? (<>
                     <Link to={'/mypage'}>MyPage</Link>
-                    <Link to={'/'}>Logout</Link>
+                    <Link onClick={onLogOutClick}>Logout</Link>
                 </>) : (
-                    <Link to={'/login'}>Login</Link>
+                    <Link to={'/logIn'}>Login</Link>
                 )}
             </LinkBox>
         </HeaderBox>
@@ -29,7 +34,7 @@ const HeaderBox = styled.header`
     background-color: white;
     display: flex;
     justify-content: space-between;
-    height: 40px;
+    height: 60px;
     padding: 10px 15%;
     position: fixed;
     top: 0;
@@ -56,7 +61,7 @@ const LinkBox = styled.div`
     a {
         font-weight: 900;
         font-size: 20px;
-        color: ${accent.TXColor};
+        color: #ad4fd8;
         margin-right: 20px;
         display: block;
         text-decoration: none;
