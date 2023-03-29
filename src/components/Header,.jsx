@@ -13,15 +13,15 @@ function Header({ loggedIn }) {
         <HeaderBox>
                 <LinkBox>
                 <Link to={'/'}>HP<span>(Hobby Pairing)</span></Link>
-                <Link to={'/gatherings'}>모임</Link>
-                <Link to={'/talents'}>재능</Link>
+                <Link to={'gatherings'}>모임</Link>
+                <Link to={'talents'}>재능</Link>
             </LinkBox>
             <LinkBox>
                 {loggedIn ? (<>
-                    <Link to={'/mypage'}>MyPage</Link>
+                    <Link to={'mypage/0/myposts'}>MyPage</Link>
                     <Link onClick={onLogOutClick}>Logout</Link>
                 </>) : (
-                    <Link to={'/logIn'}>Login</Link>
+                    <Link to={'logIn'}>Login</Link>
                 )}
             </LinkBox>
         </HeaderBox>

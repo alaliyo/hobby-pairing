@@ -1,7 +1,10 @@
+import PostCarousel from './../components/home/PostCarousel';
+
 function Home() {
+
     return(
         <div>
-            <h1>Home</h1>
+            <PostCarousel />
         </div>
     );
 }
