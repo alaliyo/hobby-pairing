@@ -1,8 +1,15 @@
 import styled from "styled-components";
-import { Link, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 function Header({ loggedIn }) {
     const navigate = useNavigate();
+    const location = useLocation();
+    const [pageUrlName, setPageUrlName] = useState('');
+
+    useEffect(() => {
+        setPageUrlName(location.pathname.split('/')[1])
+    }, [location])
 
     const onLogOutClick = () => {
         alert("로그아웃 되었습니다.")
@@ -12,16 +19,28 @@ function Header({ loggedIn }) {
     return(
         <HeaderBox>
                 <LinkBox>
-                <Link to={'/'}>HP<span>(Hobby Pairing)</span></Link>
-                <Link to={'gatherings'}>모임</Link>
-                <Link to={'talents'}>재능</Link>
+                <Tab isActive={pageUrlName === ''}>
+                    <Link to={'/'}>HP<span>(Hobby Pairing)</span></Link>
+                </Tab>
+                <Tab isActive={pageUrlName === 'gatherings'}>
+                    <Link to={'gatherings'}>모임</Link>
+                </Tab>
+                <Tab isActive={pageUrlName === 'talents'}>
+                    <Link to={'talents'}>재능</Link>
+                </Tab>
             </LinkBox>
             <LinkBox>
                 {loggedIn ? (<>
-                    <Link to={'mypage/0/myposts'}>MyPage</Link>
-                    <Link onClick={onLogOutClick}>Logout</Link>
+                    <Tab isActive={pageUrlName === 'mypage'}>
+                        <Link to={'mypage/0/profile'}>MyPage</Link>
+                    </Tab>
+                    <Tab>
+                        <Link onClick={onLogOutClick}>Logout</Link>
+                    </Tab>
                 </>) : (
-                    <Link to={'logIn'}>Login</Link>
+                    <Tab isActive={pageUrlName === 'login'}>
+                        <Link to={'login'}>Login</Link>
+                    </Tab>
                 )}
             </LinkBox>
         </HeaderBox>
@@ -58,10 +77,14 @@ const HeaderBox = styled.header`
 const LinkBox = styled.div`
         display: flex;
         align-items: center;
+`;
+
+const Tab = styled.div`
     a {
         font-weight: 900;
         font-size: 20px;
-        color: #ad4fd8;
+        color: ${p => p.isActive ? '#e3a8ff' : '#ad4fd8'};
+        text-shadow: ${p => p.isActive && '-2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000'};
         margin-right: 20px;
         display: block;
         text-decoration: none;
@@ -74,4 +97,4 @@ const LinkBox = styled.div`
             font-size: 14px;
         }
     }
-`;
+`

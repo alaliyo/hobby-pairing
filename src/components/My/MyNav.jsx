@@ -1,14 +1,35 @@
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useParams, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
 
 function MyNav() {
+    //const { userId } = useParams();
+    const state = useLocation();
+    const [urlLast, seturlLast] = useState('');
+
+    useEffect(() => {
+        seturlLast(state.pathname.split('/')[3]);
+        console.log(urlLast);
+    },[state, urlLast]);
+
     return(
         <NavBox>
-            <Link to={"profile"}>나의 <br />프로필</Link>
-            <Link to={"gatherings"}>신청한<br />모임</Link>
-            <Link to={"talents"}>싱청한<br />재능</Link>
-            <Link to={"myposts"}>나의<br />게시물</Link>
+            <Tab isActive={urlLast === 'profile'}>
+                <Link  to={"profile"}>나의 <br />프로필</Link>
+            </Tab>
+        
+            <Tab isActive={urlLast === 'gatherings'}>
+                <Link  to={"gatherings"}>신청한<br />모임</Link>
+            </Tab>
+
+            <Tab isActive={urlLast === 'talents'}>
+                <Link  to={"talents"}>신청한<br />재능</Link>
+            </Tab>
+
+            <Tab isActive={urlLast === 'myposts'}>
+                <Link  to={"myposts"}>나의<br />게시물</Link>
+            </Tab>
         </NavBox>
     );
 }
@@ -20,9 +41,15 @@ const NavBox = styled.nav`
     height: 400px;
     display: flex;
     flex-direction: column;
+`
+
+const Tab = styled.div`
     a {
         font-size: 20px;
-        color: #c681ff;
+        color: ${(p) => p.isActive ? 'white' : '#c681ff'};
+        background-color: ${(p) => p.isActive ? '#e3a8ff' : 'white'};
+        text-shadow: ${(p) => p.isActive && '-2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000'};
+        box-shadow: ${(p) => p.isActive && '-2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000'};
         border: 2px solid #c681ff;
         padding-top: 12px;
         text-align: center;
@@ -33,7 +60,8 @@ const NavBox = styled.nav`
         margin-bottom: 5px;
         border-radius: 10px;
         &:hover {
-            color: #e3a8ff;
+            color: white;
+            background-color: #e3a8ff;
             text-shadow: -2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000;
             transition: .3s;
             box-shadow: -2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000;
