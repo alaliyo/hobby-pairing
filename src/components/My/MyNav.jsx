@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useParams, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
 
@@ -10,8 +10,7 @@ function MyNav() {
 
     useEffect(() => {
         seturlLast(state.pathname.split('/')[3]);
-        console.log(urlLast);
-    },[state, urlLast]);
+    },[state]);
 
     return(
         <NavBox>
@@ -41,6 +40,9 @@ const NavBox = styled.nav`
     height: 400px;
     display: flex;
     flex-direction: column;
+    @media screen and (max-width: 600px) {
+        margin-left: 2vw;
+    }
 `
 
 const Tab = styled.div`
