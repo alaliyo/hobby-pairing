@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button, Modal, Form } from 'react-bootstrap';
-import { UserList } from '../../UserDB';
+import { UserList } from '../../DB';
 
 function ProfilePasswordChack({ passwordChack, chackDate }) {
     const [show, setShow] = useState(false);

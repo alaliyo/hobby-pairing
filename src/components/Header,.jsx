@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { UserList } from '../DB';
 
 function Header({ loggedIn }) {
     const navigate = useNavigate();
@@ -32,7 +33,7 @@ function Header({ loggedIn }) {
             <LinkBox>
                 {loggedIn ? (<>
                     <Tab isActive={pageUrlName === 'mypage'}>
-                        <Link to={'mypage/0/profile'}>MyPage</Link>
+                        <Link to={'mypage/0/profile'}>{UserList.nickname}</Link>
                     </Tab>
                     <Tab>
                         <Link onClick={onLogOutClick}>Logout</Link>

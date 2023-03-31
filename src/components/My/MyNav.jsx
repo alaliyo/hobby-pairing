@@ -47,11 +47,11 @@ const NavBox = styled.nav`
 
 const Tab = styled.div`
     a {
-        font-size: 20px;
         color: ${(p) => p.isActive ? 'white' : '#c681ff'};
         background-color: ${(p) => p.isActive ? '#e3a8ff' : 'white'};
         text-shadow: ${(p) => p.isActive && '-2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000'};
         box-shadow: ${(p) => p.isActive && '-2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000'};
+        font-size: 20px;
         border: 2px solid #c681ff;
         padding-top: 12px;
         text-align: center;

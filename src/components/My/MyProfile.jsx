@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import BlankProfile from '../../img/BlankProfile.png';
-import { UserList } from '../../UserDB';
+import { UserList } from '../../DB';
 import ProfilePasswordChack from './ProfilePasswordChack';
 import { Form, Button } from 'react-bootstrap';
 
