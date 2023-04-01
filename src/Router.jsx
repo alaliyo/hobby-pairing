@@ -6,10 +6,12 @@ import LogIn from './pages/LogIn';
 import My from './pages/My';
 import Gatherings from './pages/Gatherings';
 import Talents from './pages/Talents';
+import GatheringWriting from './pages/GatheringWriting';
 import MyProfile from "./components/My/MyProfile";
 import MyGatherings from "./components/My/MyGatherings";
 import MyTalents from "./components/My/MyTalents";
 import MyPosts from "./components/My/MyPosts";
+import GatheringDetail from "./pages/GatheringDetail";
 
 const router = createBrowserRouter([
     {
@@ -51,6 +53,14 @@ const router = createBrowserRouter([
                 element: <Gatherings />,
             },
             {
+                path: "gatherings/detail/:gatheringId",
+                element: <GatheringDetail />,
+            },
+            {
+                path: "gatherings/weiting",
+                element: <GatheringWriting />,
+            },
+            {
                 path: "talents",
                 element: <Talents />,
             },
@@ -60,3 +70,4 @@ const router = createBrowserRouter([
 ]);
 
 export default router;
+

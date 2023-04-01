@@ -7,7 +7,7 @@ function GatheringWriting() {
 
     useEffect(() => {
         if (!loggedIn) {
-            alert('로그인 후 사용해주세요');
+            alert('로그인 후 사용 가능합니다.');
             navigate('/login')
         }
     },[loggedIn, navigate])
