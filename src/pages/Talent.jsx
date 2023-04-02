@@ -1,9 +1,12 @@
 import { useEffect } from "react";
-import { useNavigate, useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext, useParams } from "react-router-dom";
+import { GatheringsList } from '../DB';
 
 function Talent() {
     const { loggedIn } = useOutletContext();
     const navigate = useNavigate();
+    const { talentsId } = useParams();
+    console.log(GatheringsList[talentsId]);
 
     useEffect(() => {
         if (!loggedIn) {

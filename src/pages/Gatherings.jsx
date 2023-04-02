@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { Button, Form, InputGroup } from 'react-bootstrap';
-import { Outlet } from 'react-router-dom';
-import Cards from './../components/Gatherings/Cards';
+import { useOutletContext, Link } from "react-router-dom";
+import GatheringsTable from '../components/Gatherings/GatheringsTable';
 
 function Gatherings() {
+    const { loggedIn } = useOutletContext();
     const [valueSearch, setValueSearch] = useState('');
 
     const onSearch = (e) => {
@@ -25,8 +26,16 @@ function Gatherings() {
                     </Button>
                 </InputGroup>
             </InputBox>
-            <Cards />
-            <Outlet />
+            
+            <ButtonBox>
+                {loggedIn && (
+                    <Link to={'writing'}>
+                        <Button variant="outline-secondary">글쓰기</Button>
+                    </Link>
+                )}
+            </ButtonBox>
+
+            <GatheringsTable />
         </GatheringsBody>
     );
 }
@@ -44,8 +53,11 @@ const InputBox = styled.div`
         width: 50px;
         font-weight: 900;
         font-size: 16px;
-        &:hover {
-            background-color: #db8fff;
-        }
     }
+`;
+
+const ButtonBox = styled.div`
+    height: 45px;
+    display: flex;
+    justify-content: flex-end;
 `;

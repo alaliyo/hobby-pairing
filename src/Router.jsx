@@ -6,6 +6,8 @@ import LogIn from './pages/LogIn';
 import My from './pages/My';
 import Gatherings from './pages/Gatherings';
 import Talents from './pages/Talents';
+import Talent from './pages/Talent';
+import TalentWriting from './pages/TalentWriting';
 import GatheringWriting from './pages/GatheringWriting';
 import MyProfile from "./components/My/MyProfile";
 import MyGatherings from "./components/My/MyGatherings";
@@ -57,12 +59,20 @@ const router = createBrowserRouter([
                 element: <GatheringDetail />,
             },
             {
-                path: "gatherings/weiting",
+                path: "gatherings/writing",
                 element: <GatheringWriting />,
             },
             {
                 path: "talents",
                 element: <Talents />,
+            },
+            {
+                path: "talents/detail/:talentsId",
+                element: <Talent />,
+            },
+            {
+                path: "talents/writing",
+                element: <TalentWriting />,
             },
         ],
         errorElement: <NotFound />

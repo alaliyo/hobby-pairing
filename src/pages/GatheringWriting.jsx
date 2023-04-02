@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
+import styled from "styled-components";
 
 function GatheringWriting() {
     const { loggedIn } = useOutletContext();
@@ -13,10 +14,22 @@ function GatheringWriting() {
     },[loggedIn, navigate])
     
     return(
-        <div>
-            <h1>GatheringWriting</h1>
-        </div>
+        <WritingBox>
+            <h3>모임 작성하기</h3>
+        </WritingBox>
     );
 }
 
 export default GatheringWriting;
+
+const WritingBox = styled.div`
+    width: 80%;
+    height: 70vw;
+    margin: 10px auto;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: #f1f1f1;
+    h3 {
+        font-weight: 900;
+    }
+`;
