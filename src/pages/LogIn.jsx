@@ -31,7 +31,6 @@ function LogIn() {
     };
 
     const onSubmit = () => {
-        console.log(email, nickname, password);
         setErrors('massge');
         loggedIn && navigate('/')
     };
