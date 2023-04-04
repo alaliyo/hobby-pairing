@@ -28,12 +28,12 @@
 
 <br>
 
-## 아키텍처
+## 📊아키텍처
 <a href='https://lucid.app/lucidspark/87605903-7965-4374-b205-f445d374d6b5/edit?viewport_loc=1687%2C-1484%2C5170%2C5003%2C0_0&invitationId=inv_d997192a-94b0-41a7-84c9-3b598ca0c20a' target='_blank'>링크입니다. (업데이트 예졍)</a>
 
 <br>
 
-## 트러블 슈팅
+## 🎇트러블 슈팅
 <h3>1. 새로고침 시 카드 순서 바뀜 </h3>
 <details>
 <h4>1. 트러블 슈팅 해결</h4>
@@ -43,5 +43,5 @@
 
 <br>
 
-## 백엔드 gtihub 링크
+## 🚋백엔드 gtihub 링크
 <a href='https://github.com/goodisgun/HP' target='_blank'>https://github.com/goodisgun/HP</a>
