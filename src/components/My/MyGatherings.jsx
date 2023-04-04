@@ -1,7 +1,9 @@
+import GatheringsTable from '../Gatherings/GatheringsTable';
+
 function MyGatherings() {
     return(
         <div>
-            <h1>MyGatherings</h1>
+            <GatheringsTable />
         </div>
     );
 }

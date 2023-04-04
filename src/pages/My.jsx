@@ -27,5 +27,5 @@ export default My;
 
 const MyBody = styled.div`
     display: flex;
-    height: 600px;
+    height: 700px;
 `;

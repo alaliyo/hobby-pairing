@@ -5,10 +5,10 @@ import styled from 'styled-components';
 
 function MyNav() {
     //const { userId } = useParams();
-    const state = useLocation();
-    const [urlLast, seturlLast] = useState('');
+    const state = useLocation(); // url 가져오기
+    const [urlLast, seturlLast] = useState(''); // Nav에 고정 url 값 저장 
 
-    useEffect(() => {
+    useEffect(() => { // profile, gatherings, talents, myposts 반응 변경
         seturlLast(state.pathname.split('/')[3]);
     },[state]);
 

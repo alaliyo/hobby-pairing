@@ -8,7 +8,6 @@ function GatheringWriting() {
     const [postContent, setPostContent] = useState('');  // 게시물 내용
     const [postImg, setPostImg] = useState(''); // 게시물 이미지
     const [postFirstDate, setPostFirstDate] = useState(''); // 모임 시작 날짜
-    const [postLastDate, setPostLastDate] = useState(''); // 모임 마지막 날짜
     const [postMemberNum, setPostMemberNum] = useState(''); // 모임 참여 인원
     const { loggedIn } = useOutletContext(); // 로그인 확인 여부
     const navigate = useNavigate(); //{id} 가져옴
@@ -33,8 +32,6 @@ function GatheringWriting() {
             setPostImg(value);
         } else if (name === "first-date") {
             setPostFirstDate(value);
-        } else if (name === "last-date") {
-            setPostLastDate(value);
         } else if (name === "member-num") {
             setPostMemberNum(value);
         }
@@ -60,7 +57,6 @@ function GatheringWriting() {
                 <InputGroup className="mb-3">
                     <InputGroup.Text>기간 입력</InputGroup.Text>
                     <Form.Control name="first-date" type="datetime-local" value={postFirstDate} onChange={dateChange} />
-                    <Form.Control name="last-date" type="datetime-local" value={postLastDate} onChange={dateChange} />
                 </InputGroup>
                 <span>모임 수</span>
                 <Form.Control name="member-num" type="number" min="1" max="100" maxlength="3" placeholder="1~100" value={postMemberNum} onChange={dateChange} />

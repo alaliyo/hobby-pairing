@@ -1,8 +1,8 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { GatheringsList } from '../../DB';
-import { useState } from 'react';
 
 function Cards() {
     const [reverseList] = useState([...GatheringsList].reverse());
