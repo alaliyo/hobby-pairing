@@ -41,3 +41,7 @@
 <span>&ensp;그래서 [...]를 이용해 해결 했다. 혹시 ChatGPT가 해결해 줄 수 있을까? 하고 물어봤지만 답을 주지는 않앗다.</span>
 </details>
 
+<br>
+
+## 백엔드 gtihub 링크
+<a href='https://github.com/goodisgun/HP' target='_blank'>https://github.com/goodisgun/HP</a>
