@@ -36,11 +36,11 @@ function Header({ loggedIn }) {
                         <Link to={'mypage/0/profile'}>{UserList.nickname}</Link>
                     </Tab>
                     <Tab>
-                        <Link onClick={onLogOutClick}>Logout</Link>
+                        <Link onClick={onLogOutClick}>로그아웃</Link>
                     </Tab>
                 </>) : (
                     <Tab isActive={pageUrlName === 'login'}>
-                        <Link to={'login'}>Login</Link>
+                        <Link to={'login'}>로그인</Link>
                     </Tab>
                 )}
             </LinkBox>

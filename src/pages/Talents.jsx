@@ -5,14 +5,14 @@ import { useOutletContext, Link } from "react-router-dom";
 import Cards from '../components/Talents/Cards';
 
 function Talents() {
-    const { loggedIn } = useOutletContext();
-    const [valueSearch, setValueSearch] = useState('');
+    const { loggedIn } = useOutletContext(); // 로그인 체크
+    const [valueSearch, setValueSearch] = useState(''); // 검색 값
 
-    const onSearch = (e) => {
+    const onSearch = (e) => { // 검색 값 클라이언트에게 받기
         setValueSearch(e.target.value)
     }
 
-    const searchCilck = () => {
+    const searchCilck = () => { // 검색 값으로 함수 실행
         console.log(valueSearch)
     }
 

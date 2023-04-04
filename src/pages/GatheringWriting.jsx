@@ -4,24 +4,23 @@ import styled from "styled-components";
 import { Button, Form, InputGroup } from 'react-bootstrap';
 
 function GatheringWriting() {
-    const [postTitle, setPostTitle] = useState('');
-    const [postContent, setPostContent] = useState('');
-    const [postImg, setPostImg] = useState('');
-    const [postFirstDate, setPostFirstDate] = useState('');
-    const [postLastDate, setPostLastDate] = useState('');
-    const [postMemberNum, setPostMemberNum] = useState('');
+    const [postTitle, setPostTitle] = useState(''); // 게시물 제목
+    const [postContent, setPostContent] = useState('');  // 게시물 내용
+    const [postImg, setPostImg] = useState(''); // 게시물 이미지
+    const [postFirstDate, setPostFirstDate] = useState(''); // 모임 시작 날짜
+    const [postLastDate, setPostLastDate] = useState(''); // 모임 마지막 날짜
+    const [postMemberNum, setPostMemberNum] = useState(''); // 모임 참여 인원
+    const { loggedIn } = useOutletContext(); // 로그인 확인 여부
+    const navigate = useNavigate(); //{id} 가져옴
 
-    const { loggedIn } = useOutletContext();
-    const navigate = useNavigate();
-
-    useEffect(() => {
+    useEffect(() => { // 로그인 확인 여부
         if (!loggedIn) {
             alert('로그인 후 사용 가능합니다.');
             navigate('/login')
         }
     },[loggedIn, navigate])
 
-    const dateChange = (e) => {
+    const dateChange = (e) => { // 게시물 date 받기
         const {
             target: { name, value },
         } = e;
@@ -36,12 +35,10 @@ function GatheringWriting() {
             setPostFirstDate(value);
         } else if (name === "last-date") {
             setPostLastDate(value);
-        } else if (name === "member-mum") {
+        } else if (name === "member-num") {
             setPostMemberNum(value);
         }
     };
-
-    console.log(postTitle, postContent, postImg, postFirstDate, postLastDate, postMemberNum)
     
     return(
         <WritingBox>
@@ -66,7 +63,7 @@ function GatheringWriting() {
                     <Form.Control name="last-date" type="datetime-local" value={postLastDate} onChange={dateChange} />
                 </InputGroup>
                 <span>모임 수</span>
-                <Form.Control name="member-mum" type="number" min="1" max="100" maxlength="3" placeholder="1~100" value={postMemberNum} onChange={dateChange} />
+                <Form.Control name="member-num" type="number" min="1" max="100" maxlength="3" placeholder="1~100" value={postMemberNum} onChange={dateChange} />
                 <br />
                 <Button variant="outline-secondary" type="submit" >완료</Button>
             </WritingForm>
@@ -77,8 +74,8 @@ function GatheringWriting() {
 export default GatheringWriting;
 
 const WritingBox = styled.div`
-    width: 80%;
-    height: 73vw;
+    width: 800px;
+    height: 700px;
     margin: 10px auto;
     padding: 20px;
     border-radius: 20px;
@@ -94,20 +91,26 @@ const WritingBox = styled.div`
         font-size: 15px;
         font-weight: 500;
     }
-
     textarea {
         resize: none;
         padding-top: none;
         height: 140px;
     }
+    @media screen and (max-width: 1250px) {
+        width: 85%;
+    }
+    @media screen and (max-width: 978px) {
+        width: 90%;
+    }
+    @media screen and (max-width: 768px) {
+        width: 95%; 
+    }
+    @media screen and (max-width: 600px) {
+        width: 100%;  
+    }
 `;
 
 const WritingForm = styled.form`
-    input {
-        :nth-child(14) {
-            width: 200px;
-        }
-    }
     button {
         float: right;
     }

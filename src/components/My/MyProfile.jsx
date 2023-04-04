@@ -8,15 +8,15 @@ import { Form, Button } from 'react-bootstrap';
 
 
 function MyProfile() {
-    const [passwordChack, setPasswordChack] = useState(false);
-    const [imagePatch, setImagePatch] = useState('');
-    const [introductionPatch, setIntroductionPatch] = useState(UserList.introduction);
+    const [passwordChack, setPasswordChack] = useState(false); // 비밀번호 체크
+    const [imagePatch, setImagePatch] = useState(''); // 수정 img
+    const [introductionPatch, setIntroductionPatch] = useState(UserList.introduction); //user 정보
     
-    const chackDate = (e) => {
+    const chackDate = (e) => { // 자식 컴퍼넌트에서 비밀번호 받기
         setPasswordChack(e);
     }
 
-    const patchDataChange = (e) => {
+    const patchDataChange = (e) => { // 수정 date 받기
         const {
             target: { name, value },
         } = e;
@@ -27,7 +27,7 @@ function MyProfile() {
         } 
     };
 
-    const patchDate = () => {
+    const patchDate = () => { // 수정 완료 여부 묻기
         const result = window.confirm('수정하시겠습니다?');
         if (result) {
             console.log(imagePatch, introductionPatch)

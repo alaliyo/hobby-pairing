@@ -5,14 +5,14 @@ import { useOutletContext, Link } from "react-router-dom";
 import GatheringsTable from '../components/Gatherings/GatheringsTable';
 
 function Gatherings() {
-    const { loggedIn } = useOutletContext();
+    const { loggedIn } = useOutletContext(); // 로그인 체크
     const [valueSearch, setValueSearch] = useState('');
 
-    const onSearch = (e) => {
+    const onSearch = (e) => { // 검색 내용 받기
         setValueSearch(e.target.value)
     }
 
-    const searchCilck = () => {
+    const searchCilck = () => { // 내용 검색하기 버튼
         console.log(valueSearch)
     }
     

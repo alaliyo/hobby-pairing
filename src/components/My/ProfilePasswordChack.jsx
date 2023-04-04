@@ -3,17 +3,17 @@ import { Button, Modal, Form } from 'react-bootstrap';
 import { UserList } from '../../DB';
 
 function ProfilePasswordChack({ passwordChack, chackDate }) {
-    const [show, setShow] = useState(false);
-    const [passwordText, setPasswordText] = useState('');
+    const [show, setShow] = useState(false); // 수정 창 띄우기
+    const [passwordText, setPasswordText] = useState(''); // 비밀번호 받기
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleClose = () => setShow(false); // 비밀번호 체크 창 띄우기
+    const handleShow = () => setShow(true); // 비밀번호 체크 창 숨기기
 
-    const onChange = (e) => {
+    const onChange = (e) => { // 비밀번호 받기
         setPasswordText(e.target.value);
     };
 
-    const handleOk = () => {
+    const handleOk = () => { // 비밀번호 비교하기
         if (passwordText === UserList.password) {
             handleClose();
             chackDate(!passwordChack);

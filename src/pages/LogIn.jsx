@@ -4,17 +4,17 @@ import { useNavigate, useOutletContext } from "react-router-dom";
 import { Button, Form, Stack, Alert, InputGroup } from 'react-bootstrap';
 
 function LogIn() {
-    const [email, setEmail] = useState("");
-    const [nickname, setNickname] = useState("");
-    const [password, setPassword] = useState("");
-    const [password2, setPassword2] = useState("");
-    const [account, setAccount] = useState(false);
-    const [errors, setErrors] = useState("")
+    const [email, setEmail] = useState(""); // 이메일(아이디)
+    const [nickname, setNickname] = useState(""); // 닉네임
+    const [password, setPassword] = useState(""); // 비밀번호
+    const [password2, setPassword2] = useState(""); // 비밀번호 확인
+    const [account, setAccount] = useState(false); // 로그인, 회원가입 boolean
+    const [errors, setErrors] = useState("") // 에러 메시지
 
-    const { loggedIn } = useOutletContext();
+    const { loggedIn } = useOutletContext(); // 로그인 되어 있는지 확인
     const navigate = useNavigate();
 
-    const onChange = (e) => {
+    const onChange = (e) => { // 클라이언트에게 값 받기
         const {
             target: { name, value },
         } = e;
@@ -30,14 +30,14 @@ function LogIn() {
         }
     };
 
-    const onSubmit = () => {
+    const onSubmit = () => { // 로그인 후 홈으로
         setErrors('massge');
         loggedIn && navigate('/')
     };
 
-    const toggleAccount = () => setAccount(prev => !prev);
+    const toggleAccount = () => setAccount(prev => !prev); // 로그인, 회원가입 창 변경
 
-    useEffect(() => {
+    useEffect(() => { // 이미 로그인이 되어 있으면 홈으로
         if (loggedIn) {
             alert('이미 로그인 되어 있습니다.');
             navigate('/')

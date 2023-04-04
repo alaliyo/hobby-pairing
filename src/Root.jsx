@@ -5,14 +5,14 @@ import Header from './components/Header,';
 import Spinner from 'react-bootstrap/Spinner';
 
 function Root() {
-  const [init, setInit] = useState(false);
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [init, setInit] = useState(false); // 로딩 후 클라이어트에게 띄우기
+  const [loggedIn, setLoggedIn] = useState(false); // 로그인 체크 여부
 
-  useEffect(() => {
+  useEffect(() => { // 로딩 후 클라이어트에게 띄우기
     setInit(true);
   }, []);
 
-  const onCilck = () => {
+  const onCilck = () => { // 로그인 체크 여부
     setLoggedIn(!loggedIn)
   };
 

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { GatheringsList } from '../../DB';
 
 function GatheringsTable() {
-    const [reverseList] = useState([...GatheringsList].reverse());
+    const [reverseList] = useState([...GatheringsList].reverse()); //게시믈 반전
 
     return(
         <TableBox>
