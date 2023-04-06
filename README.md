@@ -39,6 +39,22 @@
 <h4>1. 트러블 슈팅 해결</h4>
 <span>&ensp;간단한 오류였다. DB에서 받아오는 배열을 reverse()를 이용해 반전 시키는데 reverse가 배열을 직접적으로 바꾼다는 것을 알고 있으면서 마음이 급해 안 보였다.</span> <br>
 <span>&ensp;그래서 [...]를 이용해 해결 했다. 혹시 ChatGPT가 해결해 줄 수 있을까? 하고 물어봤지만 답을 주지는 않앗다.</span>
+<hr>
+<h4>2. key 위치로 인한 console의 오류 메시지</h4>
+<span>&ensp;이것 또한 간단한 오류지만 이론적인 지식의 부족으로 나온것 같다. 우선 key는 프론트 개발자가 사용하기 위한 것이 아닌 react에서 각 요소를 식별하여 변경된 부분만 업데이트하고 성능을 최적화 하기 위한 것으로 map으로 개시물을 찍어 낼때 부모 태그 제일 앞에 선언해야 하는 것임을 알았다.</span> <br>
+
+  ```javascript
+  // 수정 전
+  {reverseList.map(obj => (
+    <Link to={`detail/${obj.id}`} key={obj.id} >
+  ...
+    
+  // 수정 후
+  {reverseList.map(obj => (
+    <Link key={obj.id} to={`detail/${obj.id}`} >
+  ...
+  ```
+  
 </details>
 
 <br>
