@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
-import Header from './components/Header,';
-import Spinner from 'react-bootstrap/Spinner';
+import { Spinner } from 'react-bootstrap';
+import Header from './components/Header';
+import Footer from './components/Footer';
+
 
 function Root() {
   const [init, setInit] = useState(false); // 로딩 후 클라이어트에게 띄우기
@@ -12,11 +14,12 @@ function Root() {
     setInit(true);
   }, []);
 
-  const onCilck = () => { // 로그인 체크 여부
+  const onClick = () => { // 로그인 체크 여부
     setLoggedIn(!loggedIn)
   };
 
   return (
+    <>
     <RootBox>
       {init ? (
         <>
@@ -29,8 +32,10 @@ function Root() {
         <Spinner animation="border" />
       )}
       
-      <button onClick={onCilck}>{loggedIn ? 'logout' : 'login'}</button>
+      <button onClick={onClick}>{loggedIn ? 'logout' : 'login'}</button>
     </RootBox>
+    <Footer />
+    </>
   );
 }
 
