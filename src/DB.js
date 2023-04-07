@@ -52,12 +52,6 @@ export const GatheringsList = [
                 nickname : '조은총',
                 createdAt : '2023-04-01T10:00',
             },
-            {
-                comenetid : 1,
-                content : '네 가능합니다~~ 차기 시작하는건 15분 뒤입니다.',
-                nickname : '김성원',
-                createdAt : '2023-04-01T11:47',
-            },
         ],
         members : [
             '김성원',

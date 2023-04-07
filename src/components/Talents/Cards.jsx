@@ -9,9 +9,9 @@ function Cards() {
 
     return (
         <CardsBox>
-            {reverseList.map(obj => (<>
+            {reverseList.map(obj => (
             <Link key={obj.id} to={`detail/${obj.id}`} >
-                <Card style={{ width: '18rem' }}>
+                <Card key={obj.id} style={{ width: '18rem' }}>
                     <Card.Img variant="top" src={obj.image} />
                     <Card.Body>
                         <Card.Title>{obj.tltie}</Card.Title>
@@ -30,7 +30,7 @@ function Cards() {
                     </Card.Body>
                 </Card>
             </Link>
-            </>))}
+            ))}
         </CardsBox>
     );
 }

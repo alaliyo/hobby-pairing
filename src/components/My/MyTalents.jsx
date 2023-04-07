@@ -11,7 +11,7 @@ function MyTalents() {
         <CardsBox>
             {reverseList.map(obj => (<>
                 <Link key={obj.id} to={`/talents/detail/${obj.id}`} >
-                    <Card style={{ width: '16rem' }}>
+                    <Card key={obj.id} style={{ width: '16rem' }}>
                         <Card.Img variant="top" src={obj.image} />
                         <Card.Body>
                             <ContentBox>
