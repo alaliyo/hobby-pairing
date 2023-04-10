@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useOutletContext, useParams } from "react-router-dom";
 import styled from "styled-components";
-import { Spinner, Button } from 'react-bootstrap';
+import { Spinner, Button, CloseButton, InputGroup, Form } from 'react-bootstrap';
 import { GatheringsList } from '../DB';
 
 function Talent() {
@@ -11,9 +11,18 @@ function Talent() {
     const [loading, setLoading] = useState(false);
     const [dateObj, setDateObj] = useState({});
     const [participationCheck, setParticipationCheck] = useState(false);
+    const [comment, setComment] = useState('');
 
     const participationClick = () => {
         setParticipationCheck(e => !e);
+    }
+
+    const commentclick = () => {
+        console.log(comment);
+    }
+
+    const commentChange = (e) => {
+        setComment(e.target.value)
     }
 
     useEffect(() => {
@@ -48,18 +57,31 @@ function Talent() {
                         <Button variant="outline-secondary" onClick={participationClick}>참여</Button>
                     }
                 </Recruitment>
-                    <CommentBox>
+                    <CommentsBox>
                     댓글
-                    {dateObj.comment.map(obj => (
-                        <Commnet key={obj.comenetid}>
-                            <Information>
-                                <div>{obj.nickname}</div>
-                                <div>{obj.createdAt}</div>
-                            </Information>
-                            <div>{obj.content}</div>
-                        </Commnet>
-                    ))}
-                </CommentBox>
+                        <InputGroup>
+                            <Form.Control name="text" type="text" onChange={commentChange} value={comment} placeholder="내용을 입력해주세요" maxLength='50' />
+                            <Button size='sm' variant="outline-secondary" id="button-addon2" onClick={commentclick}>
+                                댓글 달기
+                            </Button>
+                        </InputGroup>
+                        {dateObj.comment.map(obj => (
+                            <CommnetBox key={obj.comenetid}>
+                                <Information>
+                                    <div>{obj.nickname}</div>
+                                    <div>{obj.createdAt}</div>
+                                </Information>
+                                <Commnet>
+                                    <div>{obj.content}</div>
+                                    {obj.nickname === '김성원' && 
+                                    <div>
+                                        <Button variant="outline-secondary" size='sm'>수정</Button>
+                                        <CloseButton />
+                                    </div>}
+                                </Commnet>
+                            </CommnetBox>
+                        ))}
+                    </CommentsBox>
 
             </>) : (
                 <Spinner animation="border" role="status">
@@ -118,14 +140,22 @@ const Recruitment = styled.div`
     justify-content: right;
 `;
 
-const CommentBox = styled.div`
+const CommentsBox = styled.div`
     font-size: 17px;
     font-weight: 900;
 `;
 
-const Commnet = styled.div`
+const CommnetBox = styled.div`
     font-weight: 500;
     margin: 10px 20px;
+`;
+
+const Commnet = styled.div`
+    display: flex;
+    justify-content: space-between;
+    button {
+        margin-right: 5px;
+    }
 `;
 
 const Information = styled.div`

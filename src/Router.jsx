@@ -6,7 +6,7 @@ import LogIn from './pages/LogIn';
 import My from './pages/My';
 import Gatherings from './pages/Gatherings';
 import Talents from './pages/Talents';
-import Talent from './pages/Talent';
+import TalentDetail from './pages/TalentDetail';
 import TalentWriting from './pages/TalentWriting';
 import GatheringWriting from './pages/GatheringWriting';
 import MyProfile from "./components/My/MyProfile";
@@ -68,7 +68,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "talents/detail/:talentId",
-                element: <Talent />,
+                element: <TalentDetail />,
             },
             {
                 path: "talents/writing",

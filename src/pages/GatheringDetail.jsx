@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useOutletContext, useParams } from "react-router-dom";
-import { Spinner, Button } from 'react-bootstrap';
+import { Spinner, Button, Form, InputGroup, CloseButton } from 'react-bootstrap';
 import { GatheringsList } from '../DB';
 import styled from "styled-components";
 
@@ -13,10 +13,19 @@ function GatheringDetail() {
     const [checkCommentGrant, setCheckCommentGrant] = useState(false);
     const [participationCheck, setParticipationCheck] = useState(false);
     const [memNum, setMemNum] = useState(0);
+    const [comment, setComment] = useState('');
 
     const participationClick = () => {
         setMemNum(e => participationCheck ? e -= 1 : e += 1);
         setParticipationCheck(e => !e);
+    }
+
+    const commentclick = () => {
+        console.log(comment);
+    }
+
+    const commentChange = (e) => {
+        setComment(e.target.value)
     }
 
     useEffect(() => {
@@ -65,18 +74,31 @@ function GatheringDetail() {
                     </Button>
                 </Recruitment>
                 {checkCommentGrant && 
-                    <CommentBox>
+                    <CommentsBox>
                     댓글
+                    <InputGroup>
+                        <Form.Control name="text" type="text" onChange={commentChange} value={comment} placeholder="내용을 입력해주세요" maxLength='50' />
+                        <Button size='sm' variant="outline-secondary" id="button-addon2" onClick={commentclick}>
+                            댓글 달기
+                        </Button>
+                    </InputGroup>
                     {dateObj.comment.map(obj => (
-                        <Commnet key={obj.comenetid}>
+                        <CommnetBox key={obj.comenetid}>
                             <Information>
                                 <div>{obj.nickname}</div>
                                 <div>{obj.createdAt}</div>
                             </Information>
-                            <div>{obj.content}</div>
-                        </Commnet>
+                            <Commnet>
+                                <div>{obj.content}</div>
+                                {obj.nickname === '김성원' && 
+                                <div>
+                                    <Button variant="outline-secondary" size='sm'>수정</Button>
+                                    <CloseButton />
+                                </div>}
+                            </Commnet>
+                        </CommnetBox>
                     ))}
-                </CommentBox>
+                </CommentsBox>
                 }
 
             </>) : (
@@ -142,14 +164,22 @@ const Members = styled.div`
     margin-right: 20px;
 `
 
-const CommentBox = styled.div`
+const CommentsBox = styled.div`
     font-size: 17px;
     font-weight: 900;
 `;
 
-const Commnet = styled.div`
+const CommnetBox = styled.div`
     font-weight: 500;
     margin: 10px 20px;
+`;
+
+const Commnet = styled.div`
+    display: flex;
+    justify-content: space-between;
+    button {
+        margin-right: 5px;
+    }
 `;
 
 const Information = styled.div`
